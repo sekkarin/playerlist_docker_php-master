@@ -92,7 +92,16 @@ class PlayerModel
     }
     public function getAllPlayer()
     {
-        // $sql = "SELECT * FROM `football_player` ORDER BY `football_player`.`identifier` DESC";
+        $this->connect();
+        $sql = "SELECT * FROM `football_player` ORDER BY `football_player`.`identifier` DESC";
+        $query = $this->condb->prepare($sql);
+        if($query->execute()){
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            return json_encode($result);
+        }else{
+            return false;
+        }
+
     }
 }
 
