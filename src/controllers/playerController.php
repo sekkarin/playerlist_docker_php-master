@@ -27,7 +27,59 @@ class PlayerController
   }
   public function insert()
   {
+    try {
+      if (isset($_POST['btnadd'])) {
+        // add data to array
+        $dataArrar = array();
+        $dataArrar['firstname'] = $_POST['firstname'];
+        $dataArrar['lastname'] = $_POST['lastname'];
+        $dataArrar['team'] = $_POST['team'];
+        $dataArrar['position'] = $_POST['position'];
+        $dataArrar['image_url'] = $_POST['image'];
 
+        //! upload image
+
+        $target_dir = "./public/images/";
+        $target_file = $target_dir . basename($_FILES['image']['name']);
+        $upLoadOK = 1;
+        $imageFileType  = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+        //  check already exists
+        if(file_exists($target_file)){
+          echo "มีไฟล์แล้งใอ้เหี้ย";
+          $upLoadOK = 0;
+        }
+
+        // check file size
+        if($_FILES['image']['size'] > 1000000){
+          echo "ของมึงใหญ่เกิน";
+          $upLoadOK = 0;
+        }
+
+        //* Allow certain file formats 
+        if(
+          $imageFileType != "jpg" &&
+          $imageFileType != "png" &&
+          $imageFileType != "jpeg" &&
+          $imageFileType != "gif" 
+          
+        ){
+          echo "file มึงไม่ใช่วะ";
+          $upLoadOK = 0;
+        }
+
+        // check state
+        if($upLoadOK == 0){
+          echo"มีข้อผิดพลาดวะ ";
+        }else{
+          
+        }
+
+
+      }
+    } catch (Exception $error) {
+      echo $error;
+    }
   }
   public function update()
   {
