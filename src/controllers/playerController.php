@@ -22,7 +22,7 @@ class PlayerController
   {
     $json = $this->playerModel->getAllPlayer();
     $result = json_decode($json);
-    print_r($result);
+    // print_r($result);
     include('./views/listView.php');
   }
   public function insert()
