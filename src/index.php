@@ -1,4 +1,14 @@
 <?php
- echo "Hello Prayud";
- echo "Wello come to my website create by PHP";
+    include_once('./conf/conf.php');
+    include_once('./models/PlayerModel.php');
+
+    //! setup
+    $conf = new Config();
+    $modelPlayer = new PlayerModel($conf);
+
+    //* insert and check
+    $modelPlayer->checkAndInserter();
+    
+
+
 ?>

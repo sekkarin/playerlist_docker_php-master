@@ -21,6 +21,7 @@ class PlayerModel
         try {
             $this->condb->exec($sql);
         } catch (PDOException $e) {
+            // create table
             $sql = "CREATE TABLE football_player (
                 identifier INT(6) UNSIGNED  PRIMARY KEY,
                 firstname VARCHAR(30) NOT NULL,
@@ -29,6 +30,7 @@ class PlayerModel
                 position VARCHAR(50)  NOT NULL, 
                 image_url VARCHAR(250)  NOT NULL );";
             $this->condb->exec($sql);
+            // add data form json
             $json = json_decode(file_get_contents(__DIR__ . '/playerlist.json'));
             for ($i = 0; $i < count($json); $i++) {
                 $_sql = "";
