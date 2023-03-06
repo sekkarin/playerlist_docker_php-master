@@ -46,13 +46,13 @@
                                                 <div class="mb-3">
                                                     <label for="exampleFormControlInput1"
                                                         class="form-label">ชื่อ</label>
-                                                    <input name="fistname"  type="text" class="form-control"
+                                                    <input name="firstname"  type="text" class="form-control"
                                                         id="exampleFormControlInput1" placeholder="ชื่อ">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="exampleFormControlInput1" class="form-label">นามสกุล
                                                     </label>
-                                                    <input name="lastnaem" type="text" class="form-control"
+                                                    <input name="lastname" type="text" class="form-control"
                                                         id="exampleFormControlInput1" placeholder="นามสกุล">
                                                 </div>
                                                 <div class="mb-3">

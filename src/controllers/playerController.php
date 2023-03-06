@@ -38,7 +38,6 @@ class PlayerController
         $dataArrar['image_url'] = $_POST['image'];
 
         //! upload image
-
         $target_dir = "./public/images/";
         $target_file = $target_dir . basename($_FILES['image']['name']);
         $upLoadOK = 1;
@@ -68,13 +67,23 @@ class PlayerController
           $upLoadOK = 0;
         }
 
-        // check state
+        //! check state
         if($upLoadOK == 0){
           echo"มีข้อผิดพลาดวะ ";
         }else{
-          
+          if(move_uploaded_file($_FILES['image']['tmp_name'],$target_file)){
+              $dataArrar['image_url'] = htmlspecialchars(basename($_FILES['image']['name']));
+          }else{
+            echo "มีข้อผิดพลาดใอ้เวน";
+          }
         }
 
+        $insert = $this->playerModel->insertPlayer($dataArrar);
+        if($insert == true){
+          $this->pageRedirect('./index.php');
+        }else{
+          echo "ไม่สามารถอยู่ในชีวิตเขาได้ (ข้อมูล)";
+        }
 
       }
     } catch (Exception $error) {
@@ -94,9 +103,9 @@ class PlayerController
   public function mvcHandler()
   {
     $playerRounter = isset($_GET['playerRout']) ? $_GET['playerRout'] : NULL;
-
     switch ($playerRounter) {
       case 'add':
+        $this->insert();
         break;
       case 'update':
         $this->update();
