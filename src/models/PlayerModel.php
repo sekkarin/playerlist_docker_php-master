@@ -63,11 +63,18 @@ class PlayerModel
     {
         $this->condb = null;
     }
-    public function inserPlayer($dataArray): bool
+    public function insertPlayer(array $dataArray): bool
     {
-        // $sql = " INSERT INTO `football_player` (`identifier`, `firstname`, `lastname`, `team`, `position`, `image_url`)";
-        // $sql .= " VALUES (null, :firstname, :lastname, :team,:position , :image_url);";
-        return true;
+        $this->connect();
+        $sql = " INSERT INTO `football_player` (`identifier`, `firstname`, `lastname`, `team`, `position`, `image_url`)";
+        $sql .= " VALUES (null, :firstname, :lastname, :team,:position , :image_url);";
+        $query = $this->condb->prepare($sql);
+        if($query->execute($dataArray)){
+
+            return true;
+        }else{
+            return false;
+        }
         
     }
     public function updatePlayer($dataArray)

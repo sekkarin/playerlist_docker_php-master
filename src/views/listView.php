@@ -40,7 +40,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <form method="post" action="../index.php?playerRout=add">
+                                    <form method="post" action="../index.php?playerRout=add" enctype="multipart/form-data" >
                                         <div class="modal-body">
                                             <div class="mb-3 row">
                                                 <div class="mb-3">
@@ -73,7 +73,6 @@
                                                     <input name="image" type="file" class="form-control"
                                                         id="exampleFormControlInput1">
                                                 </div>
-
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -85,8 +84,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
